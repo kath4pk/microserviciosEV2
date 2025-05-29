@@ -1,19 +1,24 @@
-package com.perfulandia.sucursales.controller;
+package com.perfulandia.sucursales.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 import com.perfulandia.sucursales.model.Sucursal;
 import com.perfulandia.sucursales.repository.SucursalRepository;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@RestController
-@RequestMapping("/sucursales")
-public class sucursalesController {
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Service
+// @Transactional
+public class SucursalService {
+    
     @Autowired
     private SucursalRepository sucursalRepository;
 
@@ -22,7 +27,7 @@ public class sucursalesController {
     }
 
     public Sucursal findById(long id){
-        return (Sucursal) sucursalRepository.findById(id);
+        return sucursalRepository.findById(id).get();
     }
 
     public Sucursal save(Sucursal sucursal){
