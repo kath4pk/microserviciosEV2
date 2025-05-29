@@ -1,0 +1,16 @@
+# Configuración H2 embebida (sin base de datos externa)
+spring.datasource.url=jdbc:h2:mem:inventariodb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# Hibernate (JPA)
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+
+# Consola web H2 habilitada para pruebas
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+# Puerto (opcional, para que no choque con ventas)
+server.port=8081
