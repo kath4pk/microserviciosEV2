@@ -1,26 +1,21 @@
 package com.perfulandia.sucursales.model;
 
-
-import java.util.Date;
-import lombok.Data;
-import.jakarta.persistence;;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-//import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+
 @Data
-@Table(name="sucursal")
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class Sucursal {
-    public Sucursal(Integer id, String nombreSucursal, String direccion) {
-        this.id = id;
-        this.nombreSucursal = nombreSucursal;
-        this.direccion = direccion;
-    }
- 
+
+    private int id; 
+
+    private String nombreSucursal;
+    private String direccion;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

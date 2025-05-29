@@ -1,36 +1,35 @@
 package com.perfulandia.sucursales.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.perfulandia.sucursales.model.Sucursal;
-import com.perfulandia.sucursales.repository.SucursalRepository;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.perfulandia.sucursales.service.SucursalService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
-@RequestMapping("/sucursales")
+@RequestMapping("/api/sucursales")
 public class sucursalesController {
 
     @Autowired
-    private SucursalRepository sucursalRepository;
+    private SucursalService sucursalService;
 
-    public List<Sucursal> findAll(){
-        return sucursalRepository.findAll();
+    @GetMapping ("api/sucursales/agregar")
+    public Sucursal agregarSucursal(@RequestBody Sucursal sucursal){
+        return sucursalService.getSucursal(0);
     }
 
-    public Sucursal findById(long id){
-        return (Sucursal) sucursalRepository.findById(id);
+    @PutMapping("path/put")
+    public String updateSucursal(@PathVariable int id, @RequestBody Sucursal sucursal) {
+        //TODO: process PUT request
+        return (String) sucursalService.updateSucursal(sucursal);
     }
 
-    public Sucursal save(Sucursal sucursal){
-        return sucursalRepository.save(sucursal);
+    @DeleteMapping("/api/delete")
+    public String deleteSucursal(@PathVariable int id){
+        return sucursalService.deleteSucursal(id);
     }
-    
-    public void delete(Long id){
-        sucursalRepository.deleteById(id);
-    }
-
 }
