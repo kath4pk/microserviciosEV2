@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
+=======
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+>>>>>>> c5927e1392bbafa4c56fcd7d5d9e0cb68f7aeae6
     "java.configuration.updateBuildConfiguration": "interactive"
 }
