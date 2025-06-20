@@ -1,7 +1,6 @@
 package com.microservicios.perfulandia.autenticacion.services;
 import com.microservicios.perfulandia.autenticacion.model.Usuario;
 import com.microservicios.perfulandia.autenticacion.repository.AutenticacionRepository;
-import com.microservicios.perfulandia.autenticacion.repository.AutenticacionRepository;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
