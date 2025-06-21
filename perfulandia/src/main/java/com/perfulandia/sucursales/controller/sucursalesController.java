@@ -5,31 +5,32 @@ import com.perfulandia.sucursales.service.SucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
-
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/sucursales")
-public class sucursalesController {
+public class SucursalesController {
 
     @Autowired
     private SucursalService sucursalService;
 
-    @GetMapping ("api/sucursales/agregar")
+    @PostMapping("/agregar")
     public Sucursal agregarSucursal(@RequestBody Sucursal sucursal){
-        return sucursalService.getSucursal(0);
+        return sucursalService.agregarSucursal(sucursal);
     }
 
-    @PutMapping("path/put")
-    public String updateSucursal(@PathVariable int id, @RequestBody Sucursal sucursal) {
-        //TODO: process PUT request
-        return (String) sucursalService.updateSucursal(sucursal);
+    @PutMapping("/actualizar/{id}")
+    public Sucursal updateSucursal(@PathVariable int id, @RequestBody Sucursal sucursal) {
+        return sucursalService.updateSucursal(id, sucursal);
     }
 
-    @DeleteMapping("/api/delete")
+    @DeleteMapping("/eliminar/{id}")
     public String deleteSucursal(@PathVariable int id){
         return sucursalService.deleteSucursal(id);
+    }
+
+    @GetMapping("/listar")
+    public List<Sucursal> listarSucursales() {
+        return sucursalService.getAllSucursales();
     }
 }

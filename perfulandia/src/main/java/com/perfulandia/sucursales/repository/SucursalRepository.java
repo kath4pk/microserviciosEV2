@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.perfulandia.sucursales.model.Sucursal;
-
-
 @Repository
 public class SucursalRepository {
     private List<Sucursal> listaSucursales = new ArrayList<>();
@@ -33,23 +31,14 @@ public class SucursalRepository {
         return sucursalRepository.save(sucursal);
     }
 
-    public String update(Sucursal sucursal) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    public String updateSucursal(Sucursal sucursal) {
+        return sucursalRepository.updateSucursal(sucursal);
     }
 
-    public Sucursal buscarPorId(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+    public void deleteSucursal(int id) {
+        return sucursalRepository.deleteSucursal(sucursal);
     }
-
-    public void delete(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    }
-    
-    // public void delete(Long id){
-       // sucursalRepository.deleteById(id);
 }
+
        
  
