@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.perfulandia.sucursales.model.Sucursal;
@@ -12,7 +12,7 @@ import com.perfulandia.sucursales.model.Sucursal;
 public class SucursalRepository {
     private List<Sucursal> listaSucursales = new ArrayList<>();
 
-    public List <Sucursal> obtenerSucursals(){
+    public List <Sucursal> obtenerSucursal(){
         return listaSucursales;
     }
 
@@ -35,8 +35,8 @@ public class SucursalRepository {
         return sucursalRepository.updateSucursal(sucursal);
     }
 
-    public void deleteSucursal(int id) {
-        return sucursalRepository.deleteSucursal(sucursal);
+    public Object deleteSucursal(int id) {
+        return sucursalRepository.deleteSucursal(id);
     }
 }
 

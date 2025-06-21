@@ -8,18 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+// @Entity
 
 public class Sucursal {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(unique = true, nullable = false)
     private String nombreSucursal;
-
-    @Column(nullable = false)
     private String direccion;
 }
 

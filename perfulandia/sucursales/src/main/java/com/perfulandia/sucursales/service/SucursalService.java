@@ -11,11 +11,11 @@ public class SucursalService {
     @Autowired
     private SucursalRepository sucursalRepository;
 
-    public List<Sucursal>getSucursals() {
-        return sucursalRepository.obtenerSucursals();
+    public List<Sucursal>getSucursal() {
+        return sucursalRepository.obtenerSucursal();
     }
 
-    public String saveSucursal (Sucursal sucursal) {
+    public String saveSucursal(Sucursal sucursal) {
         return sucursalRepository.save(sucursal);
     }
     
@@ -23,7 +23,7 @@ public class SucursalService {
       //  return sucursalRepository.buscarPorId(id);
     //}
 
-    public String updateSucursal(Sucursal sucursal) {
+    public String updateSucursal(int id, Sucursal sucursal) {
         return sucursalRepository.updateSucursal(sucursal);
     }
 

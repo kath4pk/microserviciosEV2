@@ -9,18 +9,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/sucursales")
-public class SucursalesController {
+public class sucursalesController {
 
     @Autowired
     private SucursalService sucursalService;
 
     @PostMapping("/agregar")
-    public Sucursal agregarSucursal(@RequestBody Sucursal sucursal){
-        return sucursalService.agregarSucursal(sucursal);
+    public String agregarSucursal(@RequestBody Sucursal sucursal){
+        return sucursalService.saveSucursal(sucursal);
     }
 
     @PutMapping("/actualizar/{id}")
-    public Sucursal updateSucursal(@PathVariable int id, @RequestBody Sucursal sucursal) {
+    public String updateSucursal(@PathVariable int id, @RequestBody Sucursal sucursal) {
         return sucursalService.updateSucursal(id, sucursal);
     }
 
@@ -31,6 +31,6 @@ public class SucursalesController {
 
     @GetMapping("/listar")
     public List<Sucursal> listarSucursales() {
-        return sucursalService.getAllSucursales();
+        return sucursalService.getSucursal();
     }
 }
