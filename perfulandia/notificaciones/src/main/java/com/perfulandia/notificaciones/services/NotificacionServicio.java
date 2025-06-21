@@ -1,7 +1,7 @@
-package com.microservicios.perfulandia.notificaciones.services;
+package com.perfulandia.notificaciones.services;
 
-import com.microservicios.perfulandia.notificaciones.model.Notificacion;
-import com.microservicios.perfulandia.notificaciones.repository.NotificacionRepositorio;
+import com.perfulandia.notificaciones.model.Notificacion;
+import com.perfulandia.notificaciones.repository.NotificacionRepositorio;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class NotificacionServicio {
         this.notificacionRepositorio = notificacionRepositorio;
     }
 
-    public Notificacion  enviarNotificacion(Notificacion notificacion) {
+    public Notificacion enviarNotificacion(Notificacion notificacion) {
         return notificacionRepositorio.save(notificacion);
     }
 

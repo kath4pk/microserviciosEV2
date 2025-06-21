@@ -1,6 +1,6 @@
-package com.microservicios.perfulandia.notificaciones.repository;
+package com.perfulandia.notificaciones.repository;
 
-import com.microservicios.perfulandia.notificaciones.model.Notificacion;
+import com.perfulandia.notificaciones.model.Notificacion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
