@@ -19,16 +19,16 @@ public class SucursalService {
         return sucursalRepository.save(sucursal);
     }
     
-    public Sucursal getSucursal (int id) {
-        return sucursalRepository.buscarPorId(id);
-    }
+    //public Sucursal getSucursal (int id) {
+      //  return sucursalRepository.buscarPorId(id);
+    //}
 
     public String updateSucursal(Sucursal sucursal) {
-        return sucursalRepository.update(sucursal);
+        return sucursalRepository.updateSucursal(sucursal);
     }
 
     public String deleteSucursal(int id){
-        sucursalRepository.delete(id);
+        sucursalRepository.deleteSucursal(id);
         return "producto eliminado";
     }
 }
