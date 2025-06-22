@@ -8,7 +8,10 @@
     <groupId>com.perfulandia</groupId>
     <artifactId>perfulandia</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
+    <modules>
+        <module>perfulandia/sucursales</module>
+    </modules>
 
     <name>perfulandia</name>
     <description>Proyecto de microservicios para Perfulandia</description>

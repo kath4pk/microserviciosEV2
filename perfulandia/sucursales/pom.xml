@@ -15,7 +15,7 @@
     <groupId>com.perfulandia.sucursales</groupId>
     <artifactId>sucursales</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <name>sucursales</name>
     <description>Microservicio de sucursales para Perfulandia</description>
@@ -55,16 +55,16 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.perfulandia.sucursales.PerfulandiaApplication</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+      <configuration>
+        <mainClass>com.perfulandia.sucursales.PerfulandiaApplication</mainClass>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
 
 </project>

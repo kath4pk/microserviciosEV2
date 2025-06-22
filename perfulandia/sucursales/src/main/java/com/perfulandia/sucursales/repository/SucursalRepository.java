@@ -3,42 +3,48 @@ package com.perfulandia.sucursales.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.perfulandia.sucursales.model.Sucursal;
+
 @Repository
 public class SucursalRepository {
     private List<Sucursal> listaSucursales = new ArrayList<>();
 
-    public List <Sucursal> obtenerSucursal(){
+    public List<Sucursal> obtenerSucursal(){
         return listaSucursales;
     }
 
-    @Autowired
-    private SucursalRepository sucursalRepository;
-
     public List<Sucursal> findAll(){
-        return sucursalRepository.findAll();
+        return listaSucursales;
     }
 
     public Sucursal findById(long id){
-        return (Sucursal) sucursalRepository.findById(id);
+        // ejemplo simple para buscar por id en la lista
+        return listaSucursales.stream()
+            .filter(s -> s.getId() == id)
+            .findFirst()
+            .orElse(null);
     }
 
     public String save(Sucursal sucursal){
-        return sucursalRepository.save(sucursal);
+        listaSucursales.add(sucursal);
+        return "Sucursal guardada";
     }
 
     public String updateSucursal(Sucursal sucursal) {
-        return sucursalRepository.updateSucursal(sucursal);
+        // Aquí deberías buscar y actualizar la sucursal en la lista
+        for (int i = 0; i < listaSucursales.size(); i++) {
+            if (listaSucursales.get(i).getId() == sucursal.getId()) {
+                listaSucursales.set(i, sucursal);
+                return "Sucursal actualizada";
+            }
+        }
+        return "Sucursal no encontrada";
     }
 
-    public Object deleteSucursal(int id) {
-        return sucursalRepository.deleteSucursal(id);
+    public String deleteSucursal(int id) {
+        listaSucursales.removeIf(s -> s.getId() == id);
+        return "Sucursal eliminada";
     }
 }
-
-       
- 
