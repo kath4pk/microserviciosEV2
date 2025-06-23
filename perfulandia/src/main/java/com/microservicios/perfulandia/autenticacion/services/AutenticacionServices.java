@@ -1,11 +1,13 @@
 package com.microservicios.perfulandia.autenticacion.services;
 
-import com.microservicios.perfulandia.autenticacion.model.Usuario;
-import com.microservicios.perfulandia.autenticacion.repository.AutenticacionRepository;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.microservicios.perfulandia.autenticacion.model.Usuario;
+import com.microservicios.perfulandia.autenticacion.repository.AutenticacionRepository;
 
 
 @Service
@@ -52,7 +54,15 @@ public class AutenticacionServices {
             return ResponseEntity.ok("Login exitoso");
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                             .body("Credenciales inválidas");
+                            .body("Credenciales inválidas");
     }
 
+    public Usuario findById(Long id) {
+        return usuarioRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado: " + id));
+    }
+
+    public List<Usuario> findAll() {
+        return usuarioRepository.findAll();
+    }
 }
