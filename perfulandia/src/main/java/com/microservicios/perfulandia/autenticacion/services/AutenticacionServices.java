@@ -1,9 +1,12 @@
 package com.microservicios.perfulandia.autenticacion.services;
+
 import com.microservicios.perfulandia.autenticacion.model.Usuario;
 import com.microservicios.perfulandia.autenticacion.repository.AutenticacionRepository;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class AutenticacionServices {
@@ -17,39 +20,39 @@ public class AutenticacionServices {
 		this.passwordEncoder = passwordEncoder;
 	}
 
+	// nuevo método para el test
+	public boolean existeUsuario(String nombreUsuario) {
+		return usuarioRepository.existsByNombreUsuario(nombreUsuario);
+	}
+
     public Usuario registrarUsuario(Usuario usuario) {
-        // Verificar si el usuario ya existe
-        if (usuarioRepository.existsByNombreUsuario(usuario.getNombreUsuario())) {
+        if (existeUsuario(usuario.getNombreUsuario())) {
             throw new RuntimeException("El nombre de usuario ya está en uso");
         }
         
-        // Codificar la contraseña antes de guardarla
         usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
         
-        // Guardar el nuevo usuario
         return usuarioRepository.save(usuario);
     }
 
     public Usuario autenticarUsuario(Usuario usuario) {
-        // Buscar el usuario por nombre de usuario
         Usuario usuarioExistente = usuarioRepository.findByNombreUsuario(usuario.getNombreUsuario())
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-
-        // Verificar la contraseña
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        
         if (!passwordEncoder.matches(usuario.getContrasena(), usuarioExistente.getContrasena())) {
             throw new RuntimeException("Contraseña incorrecta");
         }
-
+        
         return usuarioExistente;
     }
 
-    public org.springframework.http.ResponseEntity<String> loginUsuario(Usuario usuario) {
-        try {
-            Usuario usuarioAutenticado = autenticarUsuario(usuario);
-            return org.springframework.http.ResponseEntity.ok("Login exitoso para: " + usuarioAutenticado.getNombreUsuario());
-        } catch (RuntimeException e) {
-            return org.springframework.http.ResponseEntity.status(401).body(e.getMessage());
+    // ajustado para devolver exactamente "Login exitoso"
+    public ResponseEntity<String> loginUsuario(Usuario usuario) {
+        if (existeUsuario(usuario.getNombreUsuario())) {
+            return ResponseEntity.ok("Login exitoso");
         }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                             .body("Credenciales inválidas");
     }
 
 }
