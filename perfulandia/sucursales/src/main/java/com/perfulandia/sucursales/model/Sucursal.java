@@ -1,5 +1,7 @@
 package com.perfulandia.sucursales.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -12,9 +14,10 @@ import lombok.Setter;
 @Getter
 @Setter
 
-// @Entity
+@Entity
 
 public class Sucursal {
+    @Id
     private int id;
     private String nombreSucursal;
     private String direccion;
