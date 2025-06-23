@@ -43,7 +43,6 @@ public class SucursalRepository {
         return "Sucursal no encontrada";
     }
 
-
     public String deleteSucursal(int id) {
         listaSucursales.removeIf(s -> s.getId() == id);
         return "Sucursal eliminada";

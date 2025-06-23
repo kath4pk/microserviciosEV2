@@ -47,7 +47,7 @@
             <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
-
+    <!-- H2-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -96,23 +96,36 @@
             <version>5.12.0</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Swagger OpenAPI UI -->
+    <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        <version>2.5.0</version>
+    </dependency>
+    
+<!-- HATE OAS-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-hateoas</artifactId>
+    </dependency>
     </dependencies>
 
 <build>
-  <plugins>
-    <plugin>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-maven-plugin</artifactId>
-      <configuration>
-        <mainClass>com.perfulandia.sucursales.PerfulandiaApplication</mainClass>
-      </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M8</version>
-    </plugin>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <mainClass>com.perfulandia.sucursales.PerfulandiaApplication</mainClass>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M8</version>
+        </plugin>
   </plugins>
 </build>
-
 </project>

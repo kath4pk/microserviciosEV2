@@ -3,7 +3,6 @@ package com.perfulandia.sucursales.service;
 import com.perfulandia.sucursales.model.Sucursal;
 import com.perfulandia.sucursales.repository.SucursalRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -33,6 +32,8 @@ public class SucursalService {
 
     public String deleteSucursal(int id) {
         sucursalRepository.deleteSucursal(id);
-        return "producto eliminado";
+        return "Sucursal eliminada";
     }
 }
+
+
