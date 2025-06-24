@@ -5,6 +5,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
+import org.springframework.lang.NonNull;
 
 import com.microservicios.perfulandia.autenticacion.controller.UsuarioController;
 import com.microservicios.perfulandia.autenticacion.model.Usuario;
@@ -14,7 +15,8 @@ public class UsuarioModelAssembler
     implements RepresentationModelAssembler<Usuario, EntityModel<Usuario>> {
 
     @Override
-    public EntityModel<Usuario> toModel(Usuario usuario) {
+    @NonNull
+    public EntityModel<Usuario> toModel(@NonNull Usuario usuario) {
         return EntityModel.of(usuario,
             // Enlace para registrar un usuario
             linkTo(methodOn(UsuarioController.class)

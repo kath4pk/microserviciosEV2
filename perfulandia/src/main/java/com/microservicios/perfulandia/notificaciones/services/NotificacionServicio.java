@@ -26,4 +26,9 @@ public class NotificacionServicio {
     public List<Notificacion> obtenerNotificacionesPorDestinatario(String destinatario) {
         return notificacionRepositorio.findByDestinatario(destinatario);
     }
+
+    public Notificacion obtenerNotificacionPorId(Long id) {
+        return notificacionRepositorio.findById(id)
+            .orElseThrow(() -> new RuntimeException("Notificación no encontrada: " + id));
+    }
 }
